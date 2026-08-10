@@ -1,9 +1,14 @@
 project(
     'djvulibre-bin',
-    'cpp'
+    'cpp',
+    meson_version: '>=1.1.0'
 )
 
 cpp = meson.get_compiler('cpp')
-libdjvu_dep = cpp.find_library('djvulibre', dirs: [
-    join_paths(meson.project_source_root(), 'windows', get_option('djvulibre_version'), get_option('cpu_family'))
+libdjvu_dep = cpp.find_library('djvulibre', required: false, dirs: [
+    join_paths(meson.project_source_root(), 'windows', get_option('cpu_family'), get_option('djvulibre_version'))
 ])
+
+if not libdjvu_dep.found()
+    error('Could not load libdjvulibre version ' + get_option('djvulibre_version') + ' for ' + get_option('cpu_family'))
+endif
