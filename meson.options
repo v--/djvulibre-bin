@@ -1,0 +1,2 @@
+option('djvulibre_version', type: 'string')
+option('cpu_family', type: 'string')
