@@ -1,6 +1,6 @@
 # DjVuLibre binaries
 
-This repository contains precompiled `libdjvulibre` from [DjVuLibre](https://djvu.sourceforge.net/) for platforms like Windows on x64 or aarch64 that are not officially supported (but seem to work fine as-is).
+This repository contains precompiled `libdjvulibre` from [DjVuLibre](https://djvu.sourceforge.net/) for platforms like Windows on x86_64 or aarch64 that are not officially supported (but seem to work fine as-is).
 
 These files are intended to be used by [python-djvulibre-ng](https://github.com/v--/python-djvulibre-ng).
 
@@ -41,7 +41,7 @@ cd ..
 
 ### Adding build configurations
 
-In Visual Studio, I manually add build configurations for architectures like x64.
+In Visual Studio, I manually add build configurations for architectures like x86_64.
 
 ### Building
 
