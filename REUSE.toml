@@ -1,0 +1,22 @@
+version = 1
+
+# Since I do not actually use libdjvulibre, licensing my source should not matter. I put GPL for consistency.
+[[annotations]]
+path = [
+  "src/**.py",
+  "pyproject.toml",
+  "REUSE.toml",
+  "meson.*",
+  ".gitignore",
+  ".python-version",
+  "**.md",
+]
+SPDX-FileCopyrightText = "Ianis Vasilev <ianis@ivasilev.net>"
+SPDX-License-Identifier = "GPL-2.0-or-later"
+
+[[annotations]]
+path = [
+  "windows/**",
+]
+SPDX-FileCopyrightText = "Copyright © 1998-2026 DjVuLibre authors"
+SPDX-License-Identifier = "GPL-2.0-or-later"

@@ -4,6 +4,20 @@ This repository contains precompiled `libdjvulibre` from [DjVuLibre](https://djv
 
 These files are intended to be used by [python-djvulibre-ng](https://github.com/v--/python-djvulibre-ng).
 
+## Usage
+
+### Meson
+
+I initially planned to use Meson's [wrap dependency system](https://mesonbuild.com/Wrap-dependency-system-manual.html) to install this package where appropriate. See [this commit](https://github.com/v--/python-djvulibre-ng/blob/b9a8fb8f4afc8b3e6cf1e7865da35e9f6dc74615/src/djvulibre/meson.build) for a successful setup.
+
+### Python
+
+I decided to provide a Python module specifically for FFI-based bindings. It can be installed as follows:
+
+    "djvulibre-bin @ git+https://github.com/v--/djvulibre-bin.git@v{version} ; os_name=='nt'"
+
+See the [`api.py`](./src/djvulibre_bin/api.py) for library loading helpers.
+
 ## Build process
 
 This is a rough description of the build process I have used. It would perhaps be easy to automate if Visual Studio was not involved.

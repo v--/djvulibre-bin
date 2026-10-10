@@ -1,0 +1,29 @@
+[project]
+name = "djvulibre-bin"
+version = "0.1.0"
+description = "Prebuilt DjVuLibre libraries."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "GPL-2.0-or-later"
+license-files = ["LICENSES/GPL-2.0-or-later.txt"]
+dependencies = []
+
+authors = [
+  { name = "Ianis Vasilev", email = "ianis@ivasilev.net" }
+]
+
+classifiers = [
+  "Private :: Do Not Upload",
+]
+
+[project.urls]
+Repository = "https://github.com/v--/djvulibre-bin.git"
+
+[build-system]
+requires = ["hatchling (>=1.15)"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "meson.*",
+]
