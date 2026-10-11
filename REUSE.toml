@@ -16,7 +16,7 @@ SPDX-License-Identifier = "GPL-2.0-or-later"
 
 [[annotations]]
 path = [
-  "windows/**",
+  "bin**",
 ]
 SPDX-FileCopyrightText = "Copyright © 1998-2026 DjVuLibre authors"
 SPDX-License-Identifier = "GPL-2.0-or-later"

@@ -1,6 +1,6 @@
 [project]
 name = "djvulibre-bin"
-version = "0.1.1"
+version = "0.1.2"
 description = "Prebuilt DjVuLibre libraries."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -27,3 +27,6 @@ build-backend = "hatchling.build"
 exclude = [
   "meson.*",
 ]
+
+[tool.hatch.build.targets.wheel.force-include]
+"./bin" = "djvulibre_bin/bin"

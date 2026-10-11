@@ -2,21 +2,26 @@
 
 This repository contains precompiled `libdjvulibre` from [DjVuLibre](https://djvu.sourceforge.net/) for platforms like Windows on x86_64 that are not officially supported (but seem to work fine as-is). I did not manage to get aarch64 cross-compilation to work.
 
-These files are intended to be used by [python-djvulibre-ng](https://github.com/v--/python-djvulibre-ng).
+The precompiled files in [`./bin`](./bin) are intended to be used by [python-djvulibre-ng](https://github.com/v--/python-djvulibre-ng). Please let me know if your project depends on them so that I can be more careful with backward compatibility.
 
 ## Usage
 
 ### Meson
 
-I initially planned to use Meson's [wrap dependency system](https://mesonbuild.com/Wrap-dependency-system-manual.html) to install this package where appropriate. See [this commit](https://github.com/v--/python-djvulibre-ng/blob/b9a8fb8f4afc8b3e6cf1e7865da35e9f6dc74615/src/djvulibre/meson.build) for a successful setup.
+I initially planned to use Meson's [wrap dependency system](https://mesonbuild.com/Wrap-dependency-system-manual.html) to install this package where appropriate. See [this commit](https://github.com/v--/python-djvulibre-ng/blob/b9a8fb8f4afc8b3e6cf1e7865da35e9f6dc74615/src/djvulibre/meson.build) for a successful setup with [pybind11](https://pybind11.readthedocs.io).
 
 ### Python
 
 I decided to provide a Python module specifically for FFI-based bindings. It can be installed as follows:
 
-    "djvulibre-bin @ git+https://github.com/v--/djvulibre-bin.git@v{version} ; os_name=='nt'"
+```toml
+"djvulibre-bin @ git+https://github.com/v--/djvulibre-bin.git@v{version} ; os_name=='nt'"
+```
 
 See the [`api.py`](./src/djvulibre_bin/api.py) for library loading helpers.
+
+> [!NOTE]
+> Only the wheel builds properly expose the binaries. Source distributions and editable are not expected to work.
 
 ## Build process
 
