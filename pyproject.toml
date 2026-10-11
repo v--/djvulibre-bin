@@ -1,6 +1,6 @@
 [project]
 name = "djvulibre-bin"
-version = "0.1.2"
+version = "0.1.3"
 description = "Prebuilt DjVuLibre libraries."
 readme = "README.md"
 requires-python = ">=3.11"

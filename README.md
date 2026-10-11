@@ -64,4 +64,4 @@ In Visual Studio, I manually add build configurations for architectures like x86
 
 ### Building
 
-For each configuration, I simply build `libdjvulibre` and copy the `.dll` file into the corresponding directory.
+For each configuration, I simply build `libdjvulibre` and copy the `libdjvulibre.dll` and `libjpeg.dll` files into the corresponding directory.
