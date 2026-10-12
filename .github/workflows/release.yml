@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup build dependencies
+        run: pip install build
+
+      - name: Build wheels
+        run: |
+          DJVULIBRE_PLATFORM_TAG=win64 DJVULIBRE_VERSION=3.5.30.1 python -m build --wheel
+
+      - name: Release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: dist/*.whl
