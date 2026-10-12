@@ -1,2 +1,2 @@
 uv.lock
-dist
+dist/*.tar*

@@ -3,20 +3,22 @@ version = 1
 # Since I do not actually use libdjvulibre, licensing my source should not matter. I put GPL for consistency.
 [[annotations]]
 path = [
-  "src/**.py",
-  "pyproject.toml",
+  "python/**.py",
+  "python/pyproject.toml",
+  "python/.gitignore",
+  "python/.python-version",
   "REUSE.toml",
   "meson.*",
-  ".gitignore",
-  ".python-version",
   "**.md",
 ]
 SPDX-FileCopyrightText = "Ianis Vasilev <ianis@ivasilev.net>"
 SPDX-License-Identifier = "GPL-2.0-or-later"
 
+# Build artifacts have no copyright owner, but should be licensed under GPL as far as i understand.
 [[annotations]]
 path = [
   "bin**",
+  "python/dist/*.whl",
 ]
-SPDX-FileCopyrightText = "Copyright © 1998-2026 DjVuLibre authors"
+SPDX-FileCopyrightText = "NONE"
 SPDX-License-Identifier = "GPL-2.0-or-later"
