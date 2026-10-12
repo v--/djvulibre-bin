@@ -1,8 +1,11 @@
-# DjVuLibre binaries
+# libdjvulibre binaries
 
 This repository contains precompiled `libdjvulibre` from [DjVuLibre](https://djvu.sourceforge.net/) for platforms like Windows on x86_64 that are not officially supported (but seem to work fine as-is). I did not manage to get aarch64 cross-compilation to work.
 
-The precompiled files in [`./bin`](./bin) are intended for [python-djvulibre-ng](https://github.com/v--/python-djvulibre-ng). They should be immutable. Please let me know if your project depends on them so that I can be more careful with backward compatibility.
+The precompiled files in [`./bin`](./bin) are intended for [python-djvulibre-ng](https://github.com/v--/python-djvulibre-ng). They should be immutable.
+
+> [!NOTE]
+> Please let me know if your project depends on this repository so that I can be more careful with moving things around.
 
 ## Meson usage
 
@@ -21,7 +24,7 @@ with importlib.resources.as_file(LIBDJVULIBRE_RESOURCE_DIRECTORY / 'libdjvulibre
 
 ### Installation from wheels
 
-I wanted to avoid hosting these files on a packaging index, so I use the repository itself to host wheels in [`dist/`](./dist/).
+I wanted to avoid hosting built wheels for such a hacky project on a packaging index, so I simply dumped them in [`dist/`](./dist/).
 
 A particular `version` has the format `{djvulibre_version}.post{revision}` and can be added as a dependency using the following [specifier](https://packaging.python.org/en/latest/specifications/dependency-specifiers/):
 
@@ -29,11 +32,11 @@ A particular `version` has the format `{djvulibre_version}.post{revision}` and c
 djvulibre-bin @ https://github.com/v--/djvulibre-bin/raw/refs/heads/master/dist/djvulibre_bin-{version}-py3-none-win_amd64.whl ; sys_platform=='win32' and platform_machine=='AMD64'
 ```
 
-Naturally, the wheels are supposed to be immutable. You can pin a commit rather than the master branch.
+Naturally, the wheels are supposed to be immutable, however you can pin a specific commit just to be sure.
 
 ### Installation from source
 
-Alternatively, you can install from source:
+Alternatively, you can install from source, which would download all versions and then pick the correct one (if possible):
 
 ```plain
 djvulibre-bin @ git+https://github.com/v--/djvulibre-bin ; sys_platform=='win32'
