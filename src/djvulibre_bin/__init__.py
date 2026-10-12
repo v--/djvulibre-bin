@@ -1,3 +1,7 @@
-from .api import get_latest_available_djvulibre_version, get_libdjvulibre_resource
+import importlib.resources
 
-__all__ = ['get_latest_available_djvulibre_version', 'get_libdjvulibre_resource']
+
+LIBDJVULIBRE_RESOURCE_DIRECTORY = importlib.resources.files('djvulibre_bin') / 'bin'
+
+
+__all__ = ['LIBDJVULIBRE_RESOURCE_DIRECTORY']

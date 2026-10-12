@@ -12,16 +12,29 @@ I initially planned to use Meson's [wrap dependency system](https://mesonbuild.c
 
 ### Python
 
-I decided to provide a Python module specifically for FFI-based bindings. It can be installed as follows:
+I decided to provide Python modules specifically for FFI-based bindings. A particular `version` has the format `{djvulibre_version}.post{revision}` and can be added as a dependency as follows:
 
 ```toml
-"djvulibre-bin @ git+https://github.com/v--/djvulibre-bin.git@v{version} ; os_name=='nt'"
+"djvulibre-bin @ https://github.com/v--/djvulibre-bin/releases/download/v{version}/djvulibre_bin-{version}-any-none-win64.whl ; os_name=='nt'"
+
+
 ```
 
-See the [`api.py`](./src/djvulibre_bin/api.py) for library loading helpers.
+The wheels are built via a [hatch plugin](./hatch_plugin.py). The build itself follows the [PEP 517](https://peps.python.org/pep-0517/) standard and can be configured with environment variables:
+
+```shell
+DJVULIBRE_PLATFORM_TAG=win64 DJVULIBRE_VERSION=3.5.30.1 python -m build --wheel
+```
 
 > [!NOTE]
-> Only the wheel builds properly expose the binaries. Source distributions and editable are not expected to work.
+> The source distribution simply includes all binaries, while editable installs are disallowed by the hatch plugin.
+
+The `djvulibre_bin` module provides a `LIBDJVULIBRE_RESOURCE_DIRECTORY` [`Traversable`](https://docs.python.org/3/library/importlib.resources.abc.html#importlib.resources.abc.Traversable) constant, which can be used as follows:
+
+```python
+with importlib.resources.as_file(LIBDJVULIBRE_RESOURCE_DIRECTORY / 'libdjvulibre') as path:
+    return ctypes.CDLL(str(path))
+```
 
 ## Build process
 
